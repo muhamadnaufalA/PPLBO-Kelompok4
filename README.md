@@ -139,173 +139,77 @@ Pembatalan Order
 
     Input data dan respon server: 
 
-    **Data**
-
-    ```json
-    {
-      "consumerId": 1,
-      "deliveryAddress": {
-        "city": "Bandung",
-        "state": "Indonesia",
-        "street1": "Jl. Asia Afrika",
-        "street2": "Jl. Merdeka",
-        "zip": "40111"
-      },
-      "deliveryTime": "2024-04-05T07:31:02.414Z",
-      "lineItems": [
-        {
-          "menuItemId": "1",
-          "quantity": 1
-        }
-      ],
-      "restaurantId": 1
-    }
-
-    ```
-    
-    **Response Body**
-    ```json
-    {
-        "orderId": 1
-    }
-    ```
-    **Screenshot Hasil**
+    | Scenario      | Uji Create Order dengan consumer id dan restaurant id yang valid |
+    |:--------------|:---------------------------------------------------------------------------------|
+    | **Preconditions** | Data restoran dan consumer yang akan digunakan sudah terdaftar               | 
+    | **Steps To Execute** | 1. Akses Swagger UI pada localhost:8082/swagger-ui/index.html<br>2. Klik order-controller<br>3. Klik POST /orders<br>4. Klik Try it Out<br>5. Input test data pada request body<br>6. Klik tombol "Execute" |
+    | **Test Data** | <pre lang="json">{&#13;  "consumerId": 1,&#13;  "deliveryAddress": {&#13;    "city": "Bandung",&#13;    "state": "Indonesia",&#13;    "street1": "Jl. Asia Afrika",&#13;    "street2": "Jl. Merdeka",&#13;    "zip": "40111"&#13;  },&#13;  "deliveryTime": "2024-04-05T07:31:02.414Z",&#13;  "lineItems": [&#13;    {&#13;      "menuItemId": "1",&#13;      "quantity": 1&#13;    }&#13;  ],&#13;  "restaurantId": 1&#13;}</pre>|
+    | **Expected Result** | ``` "orderId": 1 ``` |
+    | **Actual Result** | ``` "orderId": 1 ``` |
+    | **Test Result** | PASS |
+    | **Screenshot Hasil** | ![image](gambar/createOrderNo1.jpg) |  
   
-    ![image](gambar/createOrderNo1.jpg)
-
+  
   #### 2. Uji Create Order dengan Consumer Id yang invalid
   - POST /orders create
   
     input data :
 
-    **Data**
-
-    ```json
-    {
-        "consumerId": 0,
-        "deliveryAddress": {
-          "city": "Bandung",
-          "state": "Indonesia",
-          "street1": "Jl. Asia Afrika",
-          "street2": "Jl. Merdeka",
-          "zip": "40111"
-        },
-        "deliveryTime": "2024-04-05T07:31:02.414Z",
-        "lineItems": [
-          {
-            "menuItemId": "1",
-            "quantity": 1
-          }
-        ],
-        "restaurantId": 1
-    }
-    ```
-    **Screenshot Hasil**
-    
-    *POST /orders create*
-    
-    ![image](gambar/createOrderNo2.jpg)
-
-    *GET /orders/{orderId} getOrder untuk melihat order state*
-
-    ![image](gambar/createOrderNo2GET.jpg)
+    | Scenario      | Uji Create Order dengan consumer id yang invalid |
+    |:--------------|:---------------------------------------------------------------------------------|
+    | **Preconditions** | Data restoran yang akan digunakan sudah terdaftar              | 
+    | **Steps To Execute** | 1. Akses Swagger UI pada localhost:8082/swagger-ui/index.html<br>2. Klik order-controller<br>3. Klik POST /orders<br>4. Klik Try it Out<br>5. Input test data pada request body<br>6. Klik tombol "Execute" |
+    | **Test Data** | <pre lang="json">{&#13;  "consumerId": 0,&#13;  "deliveryAddress": {&#13;    "city": "Bandung",&#13;    "state": "Indonesia",&#13;    "street1": "Jl. Asia Afrika",&#13;    "street2": "Jl. Merdeka",&#13;    "zip": "40111"&#13;  },&#13;  "deliveryTime": "2024-04-05T07:31:02.414Z",&#13;  "lineItems": [&#13;    {&#13;      "menuItemId": "1",&#13;      "quantity": 1&#13;    }&#13;  ],&#13;  "restaurantId": 1&#13;}</pre>|
+    | **Expected Result** | </pre> Response Headers:<br><pre lang="json">“status”: 500 <br>“error”: “Internal Server Error”<br>“message”: “Consumer not found with id 0”<br>“path”: “/orders”</pre> |
+    | **Actual Result** | ``` "orderId": 2 ``` |
+    | **Test Result** | FAIL |
+    | **Screenshot Hasil** | *POST /orders create*<br>![image](gambar/createOrderNo2.jpg)<br><br>*GET /orders/{orderId} getOrder untuk melihat order state*<br>![image](gambar/createOrderNo2GET.jpg) |  
 
   #### 3. Uji Create Order dengan Restaurant Id yang invalid
   - POST /orders create
     
     input data : 
 
-    **Data**
-
-    ```json
-    {
-      "consumerId": 1,
-      "deliveryAddress": {
-        "city": "Bandung",
-        "state": "Indonesia",
-        "street1": "Jl. Asia Afrika",
-        "street2": "Jl. Merdeka",
-        "zip": "40111"
-      },
-      "deliveryTime": "2024-04-05T07:31:02.414Z",
-      "lineItems": [
-        {
-          "menuItemId": "1",
-          "quantity": 1
-        }
-      ],
-      "restaurantId": 0
-    }
-    ```
-    **Screenshot Hasil**
-  
-    ![image](gambar/createOrderNo3.jpg)
+    | Scenario      | Uji Create Order dengan Restaurant Id yang invalid |
+    |:--------------|:---------------------------------------------------------------------------------|
+    | **Preconditions** | Data consumer yang akan digunakan sudah terdaftar             | 
+    | **Steps To Execute** | 1. Akses Swagger UI pada localhost:8082/swagger-ui/index.html<br>2. Klik order-controller<br>3. Klik POST /orders<br>4. Klik Try it Out<br>5. Input test data pada request body<br>6. Klik tombol "Execute" |
+    | **Test Data** | <pre lang="json">{&#13;  "consumerId": 1,&#13;  "deliveryAddress": {&#13;    "city": "Bandung",&#13;    "state": "Indonesia",&#13;    "street1": "Jl. Asia Afrika",&#13;    "street2": "Jl. Merdeka",&#13;    "zip": "40111"&#13;  },&#13;  "deliveryTime": "2024-04-05T07:31:02.414Z",&#13;  "lineItems": [&#13;    {&#13;      "menuItemId": "1",&#13;      "quantity": 1&#13;    }&#13;  ],&#13;  "restaurantId": 0&#13;}</pre>|
+    | **Expected Result** | </pre> Response Headers:<br><pre lang="json">“status”: 500 <br>“error”: “Internal Server Error”<br>“message”: “Restaurant not found with id 0”<br>“path”: “/orders”</pre> |
+    | **Actual Result** | </pre> Response Headers:<br><pre lang="json">“status”: 500 <br>“error”: “Internal Server Error”<br>“message”: “Restaurant not found with id 0”<br>“path”: “/orders”</pre> |
+    | **Test Result** | PASS |
+    | **Screenshot Hasil** | ![image](gambar/createOrderNo3.jpg)|  
   
   #### 4. Uji Create Order dengan Consumer Id dan Restaurant Id yang invalid
   - POST /orders create
     
     input data : 
 
-    **Data**
+    | Scenario      | Uji Create Order dengan Consumer Id dan Restaurant Id yang invalid |
+    |:--------------|:---------------------------------------------------------------------------------|
+    | **Preconditions** | -             | 
+    | **Steps To Execute** | 1. Akses Swagger UI pada localhost:8082/swagger-ui/index.html<br>2. Klik order-controller<br>3. Klik POST /orders<br>4. Klik Try it Out<br>5. Input test data pada request body<br>6. Klik tombol "Execute" |
+    | **Test Data** | <pre lang="json">{&#13;  "consumerId": 0,&#13;  "deliveryAddress": {&#13;    "city": "Bandung",&#13;    "state": "Indonesia",&#13;    "street1": "Jl. Asia Afrika",&#13;    "street2": "Jl. Merdeka",&#13;    "zip": "40111"&#13;  },&#13;  "deliveryTime": "2024-04-05T07:31:02.414Z",&#13;  "lineItems": [&#13;    {&#13;      "menuItemId": "1",&#13;      "quantity": 1&#13;    }&#13;  ],&#13;  "restaurantId": 0&#13;}</pre>|
+    | **Expected Result** | </pre> Response Headers:<br><pre lang="json">“status”: 500 <br>“error”: “Internal Server Error”<br>“message”: “Consumer not found with id 0." Restaurant not found with id 0”<br>“path”: “/orders”</pre> |
+    | **Actual Result** | </pre> Response Headers:<br><pre lang="json">“status”: 500 <br>“error”: “Internal Server Error”<br>“message”: “Restaurant not found with id 0”<br>“path”: “/orders”</pre> |
+    | **Test Result** | PASS |
+    | **Screenshot Hasil** | ![image](gambar/createOrderNo4.jpg)|  
 
-    ```json
-    {
-      "consumerId": 0,
-      "deliveryAddress": {
-        "city": "Bandung",
-        "state": "Indonesia",
-        "street1": "Jl. Asia Afrika",
-        "street2": "Jl. Merdeka",
-        "zip": "40111"
-      },
-      "deliveryTime": "2024-04-05T07:31:02.414Z",
-      "lineItems": [
-        {
-          "menuItemId": "1",
-          "quantity": 1
-        }
-      ],
-      "restaurantId": 0
-    }
-    ```
-    **Screenshot Hasil**
-  
-    ![image](gambar/createOrderNo4.jpg)
-  
   #### 5. Uji Create Order dengan membiarkan beberapa field  kosong
   - POST /orders create
     
     input data : 
 
-    **Data**
+    | Scenario      | Uji Create Order dengan membiarkan beberapa field  kosong |
+    |:--------------|:---------------------------------------------------------------------------------|
+    | **Preconditions** | -             | 
+    | **Steps To Execute** | 1. Akses Swagger UI pada localhost:8082/swagger-ui/index.html<br>2. Klik order-controller<br>3. Klik POST /orders<br>4. Klik Try it Out<br>5. Input test data pada request body<br>6. Klik tombol "Execute" |
+    | **Test Data** | <pre lang="json">{&#13;  "consumerId": 1,&#13;  "deliveryAddress": {&#13;    "city": "Bandung",&#13;    "street1": "Jl. Asia Afrika",&#13;    "zip": "40111"&#13;  },&#13;  "deliveryTime": "2024-04-05T07:31:02.414Z",&#13;  "lineItems": [&#13;    {&#13;      "menuItemId": "1",&#13;      "quantity": 1&#13;    }&#13;  ],&#13;  "restaurantId": 1&#13;}</pre>|
+    | **Expected Result** |  |
+    | **Actual Result** |  |
+    | **Test Result** |  |
+    | **Screenshot Hasil** | *POST /orders create*<br>![image](gambar/createOrderNo5.jpg)<br><br>*GET /orders/{orderId} getOrder untuk melihat order state*<br>![image](gambar/createOrderNo5GET.jpg) |  
 
-    ```json
-    {
-      "consumerId": 1,
-      "deliveryAddress": {
-        "city": "Bandung",
-        "street1": "Jl. Asia Afrika",
-        "zip": "40111"
-      },
-      "deliveryTime": "2024-04-05T07:31:02.414Z",
-      "lineItems": [
-        {
-          "menuItemId": "1",
-          "quantity": 1
-        }
-      ],
-      "restaurantId": 1
-    }
-    ```
-    **Screenshot Hasil**
-
-    *POST /orders create*
-
-    ![image](gambar/createOrderNo5.jpg)
-
-    *GET /orders/{orderId} getOrder untuk melihat order state*
-
-    ![image](gambar/createOrderNo5GET.jpg)
 
 - ## Revise Order
   
@@ -449,4 +353,32 @@ Pembatalan Order
   
   #### 1. Uji Cancel Order dengan Order Id yang valid
 
+  - POST /orders/{orderId}/cancel
+    
+    input data dan response server: 
+
+    | Scenario      | Uji Cancel Order dengan Order Id yang valid |
+    |:--------------|:---------------------------------------------------------------------------------|
+    | **Preconditions** | Data order yang akan digunakan sudah terdaftar.             | 
+    | **Steps To Execute** | 1. Akses Swagger UI pada localhost:8082/swagger-ui/index.html<br>2. Klik order-controller<br>3. Klik POST /order/{orderId}/cancel<br>4. Klik Try it Out<br>5. Input test data pada request body<br>6. Klik tombol "Execute" |
+    | **Test Data** | <pre lang="json"> orderId = 3</pre> |
+    | **Expected Result** | <pre lang="json">{&#13;  "orderId": 5,&#13;  "state": "CANCELLED",&#13;  "orderTotal": "105.00"&#13;}</pre> |
+    | **Actual Result** | <pre lang="json">{&#13;  "orderId": 5,&#13;  "state": "APPROVED",&#13;  "orderTotal": "105.00"&#13;}</pre> |
+    | **Test Result** | FAIL |
+    | **Screenshot Hasil** | ![image](gambar/cancelOrderNo1.jpg) |  
+
   #### 2. Uji Cancel Order dengan Order Id yang invalid
+
+  - POST /orders/{orderId}/cancel
+    
+    input data dan response server: 
+
+    | Scenario      | Uji Cancel Order dengan Order Id yang invalid |
+    |:--------------|:---------------------------------------------------------------------------------|
+    | **Preconditions** | Data order yang akan digunakan sudah terdaftar.             | 
+    | **Steps To Execute** | 1. Akses Swagger UI pada localhost:8082/swagger-ui/index.html<br>2. Klik order-controller<br>3. Klik POST /order/{orderId}/cancel<br>4. Klik Try it Out<br>5. Input test data pada request body<br>6. Klik tombol "Execute" |
+    | **Test Data** | <pre lang="json"> orderId = 100</pre> |
+    | **Expected Result** | Menampilkan Error Code 404 |
+    | **Actual Result** | Menampilkan Error Code 404 |
+    | **Test Result** | PASS |
+    | **Screenshot Hasil** | ![image](gambar/cancelOrderNo2.jpg) |  
