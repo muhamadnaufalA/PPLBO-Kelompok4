@@ -25,12 +25,15 @@ Pembatalan Order
 ## Test Scenario
 | No | Requirement ID  | Test Scenario                     | Test Case                                                                                             |
 | -- | --------------- | --------------------------------- |-------------------------------------------------------------------------------------------------------|
-|  1 |                 | Cek Fungsionalitas Create Order   | 1. Uji Revise Order dengan Order Id yang valid dan menu yang direvisi sesuai dengan yang di-order     |
-|    |                 |                                   | 2. Uji Revis Order dengan Order Id yang valid dan menu yang direvisi tidak sesuai dengan yang di-order |
-|    |                 |                                   | 3. Uji Create Order dengan Order Id yang invalid |
-|  2 |                 | Cek Fungsionalitas Revise Order   | 1. Uji Revise Order dengan Order Id yang valid dan menu yang direvisi sesuai dengan yang di-order |
-|    |                 |                                   | 2. Uji Revis Order dengan Order Id yang valid dan menu yang direvisi tidak sesuai dengan yang di-order |
-|    |                 |                                   | 3. Uji Create Order dengan Order Id yang invalid |
+|  1 |                 | Cek Fungsionalitas Create Order   | 1. Uji Create Order dengan consumer id dan restaurant id yang valid     |
+|    |                 |                                   | 2. Uji Create Order dengan Consumer Id yang Invalid |
+|    |                 |                                   | 3. Uji Create Order dengan Restaurant Id yang invalid |
+|    |                 |                                   | 4. Uji Create Order dengan Consumer Id dan Restaurant Id yang invalid |
+|    |                 |                                   | 5. Uji Create Order dengan membiarkan beberapa field  kosong |
+|  2 |                 | Cek Fungsionalitas Revise Order   | 1. Uji Revise Order dengan Order Id dan menuItem Id yang valid |
+|    |                 |                                   | 2. Uji Revise Order dengan Order Id yang valid dan menuItem Id yang invalid |
+|    |                 |                                   | 3. Uji Revise Order dengan menuItem Id yang valid dan Order Id yang invalid |
+|    |                 |                                   | 4. Uji Revise Order dengan Order Id dan menuItem Id yang invalid |
 |  3 |                 | Cek Fungsionalitas Cancel Order   | 1. Uji Cancel Order dengan Order Id yang valid |
 |    |                 |                                   | 2. Uji Cancel Order dengan Order Id yang invalid |
 
