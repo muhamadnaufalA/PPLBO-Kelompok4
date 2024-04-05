@@ -166,7 +166,7 @@ Pembatalan Order
     **Response Body**
     ```json
     {
-        “orderId”: 1
+        "orderId": 1
     }
     ```
     **Screenshot Hasil**
@@ -349,14 +349,14 @@ Pembatalan Order
     
     ```json
     {
-      “revisedOrderLineItems”: [
+      "revisedOrderLineItems": [
         {
-          “menuItemId”: “1”,
-          “quantity”: 5
+          "menuItemId": "1",
+          "quantity": 5
         },
         {
-          “menuItemId”: “2”,
-          “quantity”: 3
+          "menuItemId": "2",
+          "quantity": 3
         }
       ]
     }
@@ -369,23 +369,28 @@ Pembatalan Order
   #### 2. Uji Revise Order dengan Order Id yang valid dan menuItem Id yang invalid
   - POST /orders/{orderId}/revise
     Input data dan respon server:
-    ```json
-    orderId: 4
 
+    **Data**
+
+    ```
+    orderId: 4
+    ```
+
+    ```json
     {
-      “revisedOrderLineItems”: [
+      "revisedOrderLineItems": [
         {
-          “menuItemId”: “0”,
-          “quantity”: 5
+          "menuItemId": "0",
+          "quantity": 5
         },
         {
-          “menuItemId”: “3”,
-          “quantity”: 3
+          "menuItemId": "3",
+          "quantity": 3
         }
       ]
     }
     ```
-  - Screenshot Hasil
+    **Screenshot Hasil**
 
     ![image](gambar/reviseOrderNo2.jpg)
 
@@ -394,23 +399,24 @@ Pembatalan Order
   - 
     Input data dan respon server:
 
+    **Data**
+
     ```
     orderId: 0
     ```
 
     ```json
     orderId: 10
-
     {
-      “revisedOrderLineItems”: [
+      "revisedOrderLineItems": [
         {
-          “menuItemId”: “1”,
-          “quantity”: 2
+          "menuItemId": "1",
+          "quantity": 2
         }
       ]
     }
     ```
-  - Screenshot Hasil
+    **Screenshot Hasil**
 
     ![image](gambar/reviseOrderNo3.jpg)
 
@@ -419,22 +425,24 @@ Pembatalan Order
     
     Input data dan respon server:
 
+    **Data**
+
     ```
     orderId: 0
     ```
 
     ```json
     {
-      “revisedOrderLineItems”: [
+      "revisedOrderLineItems": [
         {
-          “menuItemId”: “0”,
-          “quantity”: 2
+          "menuItemId": "0",
+          "quantity": 2
         }
       ]
     }
     ```
   
-  - Screenshot Hasil
+    **Screenshot Hasil**
 
     ![image](gambar/reviseOrderNo4.jpg)
 
