@@ -138,6 +138,9 @@ Pembatalan Order
   - POST /orders create
 
     Input data dan respon server: 
+
+    **Data**
+
     ```json
     {
       "consumerId": 1,
@@ -158,13 +161,15 @@ Pembatalan Order
       "restaurantId": 1
     }
 
-    Response body
+    ```
+    
+    **Response Body**
+    ```json
     {
         “orderId”: 1
     }
     ```
-
-  - Screenshot Hasil
+    **Screenshot Hasil**
   
     ![image](gambar/createOrderNo1.jpg)
 
@@ -172,6 +177,9 @@ Pembatalan Order
   - POST /orders create
   
     input data :
+
+    **Data**
+
     ```json
     {
         "consumerId": 0,
@@ -192,13 +200,13 @@ Pembatalan Order
         "restaurantId": 1
     }
     ```
-  - Screenshot Hasil
+    **Screenshot Hasil**
     
-    ***POST /orders create***
+    *POST /orders create*
     
     ![image](gambar/createOrderNo2.jpg)
 
-    ***GET /orders/{orderId} getOrder untuk melihat order state***
+    *GET /orders/{orderId} getOrder untuk melihat order state*
 
     ![image](gambar/createOrderNo2GET.jpg)
 
@@ -206,6 +214,9 @@ Pembatalan Order
   - POST /orders create
     
     input data : 
+
+    **Data**
+
     ```json
     {
       "consumerId": 1,
@@ -226,7 +237,7 @@ Pembatalan Order
       "restaurantId": 0
     }
     ```
-  - Screenshot Hasil
+    **Screenshot Hasil**
   
     ![image](gambar/createOrderNo3.jpg)
   
@@ -234,6 +245,9 @@ Pembatalan Order
   - POST /orders create
     
     input data : 
+
+    **Data**
+
     ```json
     {
       "consumerId": 0,
@@ -254,7 +268,7 @@ Pembatalan Order
       "restaurantId": 0
     }
     ```
-  - Screenshot Hasil
+    **Screenshot Hasil**
   
     ![image](gambar/createOrderNo4.jpg)
   
@@ -262,6 +276,9 @@ Pembatalan Order
   - POST /orders create
     
     input data : 
+
+    **Data**
+
     ```json
     {
       "consumerId": 1,
@@ -280,15 +297,16 @@ Pembatalan Order
       "restaurantId": 1
     }
     ```
-  - Screenshot Hasil
+    **Screenshot Hasil**
 
-    ***POST /orders create***
+    *POST /orders create*
 
     ![image](gambar/createOrderNo5.jpg)
 
-    ***GET /orders/{orderId} getOrder untuk melihat order state***
+    *GET /orders/{orderId} getOrder untuk melihat order state*
 
     ![image](gambar/createOrderNo5GET.jpg)
+
 - ## Revise Order
   
   #### 1. Uji Revise Order dengan Order Id yang valid dan menu yang direvisi sesuai dengan yang di-order
@@ -296,7 +314,9 @@ Pembatalan Order
 
     Input data dan respon server:
     
-    **POST /orders create**
+    **Data**
+
+    *POST /orders create*
     ```json
     {
       "consumerId": 1,
@@ -322,10 +342,12 @@ Pembatalan Order
     }
     ```
 
-    **POST /orders/{orderId}/revise revise**
-    ```json
+    *POST /orders/{orderId}/revise revise*
+    ```
     orderId: 4
-
+    ```
+    
+    ```json
     {
       “revisedOrderLineItems”: [
         {
@@ -338,10 +360,9 @@ Pembatalan Order
         }
       ]
     }
-
     ```
   
-  - Screenshot Hasil
+    **Screenshot Hasil**
   
     ![image](gambar/reviseOrderNo1.jpg)
   
@@ -370,7 +391,13 @@ Pembatalan Order
 
   #### 3. Uji Create Order dengan menuItem Id yang valid dan Order Id yang invalid
   - POST /orders/{orderId}/revise
+  - 
     Input data dan respon server:
+
+    ```
+    orderId: 0
+    ```
+
     ```json
     orderId: 10
 
@@ -389,10 +416,14 @@ Pembatalan Order
 
   #### 4. Uji Revise Order dengan Order Id dan menuItem Id yang invalid
   - POST /orders/{orderId}/revise
+    
     Input data dan respon server:
-    ```json
-    orderId: 0
 
+    ```
+    orderId: 0
+    ```
+
+    ```json
     {
       “revisedOrderLineItems”: [
         {
@@ -401,8 +432,6 @@ Pembatalan Order
         }
       ]
     }
-
-    Response body
     ```
   
   - Screenshot Hasil
