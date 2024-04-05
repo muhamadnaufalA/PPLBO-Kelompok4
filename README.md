@@ -396,17 +396,16 @@ Pembatalan Order
 
   #### 3. Uji Create Order dengan menuItem Id yang valid dan Order Id yang invalid
   - POST /orders/{orderId}/revise
-  - 
+  
     Input data dan respon server:
 
     **Data**
 
     ```
-    orderId: 0
+    orderId: 10
     ```
 
     ```json
-    orderId: 10
     {
       "revisedOrderLineItems": [
         {
